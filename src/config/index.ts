@@ -4,14 +4,16 @@ export const SITE_CONFIG: SiteConfig = {
   title: "Yasmin Belo — Analista de Dados",
   author: "Yasmin Belo",
   description:
-    "Analista de Dados especializada em transformar dados em insights estratégicos. Experiência com Python, SQL e dashboards.",
+    "Analista de Dados especializada em transformar dados em insights estratégicos.",
   lang: "pt-BR",
   siteLogo: "/alejandro-small.jpg",
 
   navLinks: [
-    { text: "Experiência", href: "#experience" },
+    { text: "Home", href: "#hero" },
+    { text: "Sobre Mim", href: "#about" },
+    { text: "Habilidades", href: "#experience" },
     { text: "Projetos", href: "#projects" },
-    { text: "Sobre", href: "#about" },
+    { text: "Contato", href: "#contact" },
   ],
 
   socialLinks: [
