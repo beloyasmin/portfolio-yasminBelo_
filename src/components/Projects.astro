@@ -10,7 +10,7 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<section id="projects">
+<section id="projects" class="scroll-mt-24">
   {
     projects.map(({ name, summary, image, linkPreview, linkSource }, index) => {
       const top = 98 + index * 40;
