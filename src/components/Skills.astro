@@ -1,67 +1,84 @@
-<section id="skills" class="w-screen py-24 scroll-mt-24 bg-white text-black">
-  <div class="max-w-5xl mx-auto px-6 text-center">
+<section id="skills" class="py-20 bg-white">
+  <div class="container mx-auto px-6">
 
-    <h2 class="text-4xl font-bold mb-4">
-      Principais habilidades e ferramentas
-    </h2>
-
-    <div class="w-20 h-1 bg-primary mx-auto mb-12 rounded"></div>
-
-  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-
-    <!-- CARD 1 -->
-    <div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-lg">
-      <div class="text-purple-400 text-3xl mb-4">📊</div>
-      <h3 class="font-bold text-white mb-2">
-        Visualização & Análise de Dados
-      </h3>
-      <p class="text-neutral">
-        Desenvolvimento de dashboards com Power BI, Tableau e Excel.
-      </p>
+    <!-- Título -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Principais habilidades e ferramentas</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mb-8"></div>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-lg">
-      <div class="text-blue-400 text-3xl mb-4">🎨</div>
-      <h3 class="font-bold text-white mb-2">
-        Design de Dashboards
-      </h3>
-      <p class="text-neutral">
-        Criação de layouts modernos e profissionais para BI.
-      </p>
+    <!-- Grid de Skills -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- CARD 1 -->
+      <div class="rounded-lg bg-card text-card-foreground group hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border-0 shadow-lg overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+        <div class="p-8 text-center relative z-10">
+          <div class="mb-6 flex justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+            <div class="p-4 rounded-full bg-slate-50 group-hover:bg-white shadow-lg">
+              <span class="text-3xl">📊</span>
+            </div>
+          </div>
+          <h3 class="text-sm font-bold text-slate-800 mb-4 leading-tight tracking-wide">VISUALIZAÇÃO & ANÁLISE DE DADOS</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Desenvolvimento de dashboards com Power BI, Tableau e Excel.</p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="rounded-lg bg-card text-card-foreground group hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border-0 shadow-lg overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+        <div class="p-8 text-center relative z-10">
+          <div class="mb-6 flex justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+            <div class="p-4 rounded-full bg-slate-50 group-hover:bg-white shadow-lg">
+              <span class="text-3xl">🎨</span>
+            </div>
+          </div>
+          <h3 class="text-sm font-bold text-slate-800 mb-4 leading-tight tracking-wide">DESIGN DE DASHBOARDS</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Criação de layouts modernos e profissionais para BI.</p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="rounded-lg bg-card text-card-foreground group hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border-0 shadow-lg overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+        <div class="p-8 text-center relative z-10">
+          <div class="mb-6 flex justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+            <div class="p-4 rounded-full bg-slate-50 group-hover:bg-white shadow-lg">
+              <span class="text-3xl">🗄️</span>
+            </div>
+          </div>
+          <h3 class="text-sm font-bold text-slate-800 mb-4 leading-tight tracking-wide">BANCO DE DADOS & ETL</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">SQL avançado, queries e manipulação de dados.</p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-green-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="rounded-lg bg-card text-card-foreground group hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border-0 shadow-lg overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-700 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+        <div class="p-8 text-center relative z-10">
+          <div class="mb-6 flex justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+            <div class="p-4 rounded-full bg-slate-50 group-hover:bg-white shadow-lg">
+              <span class="text-3xl">💻</span>
+            </div>
+          </div>
+          <h3 class="text-sm font-bold text-slate-800 mb-4 leading-tight tracking-wide">PROGRAMAÇÃO</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Python e R para análise e processamento de dados.</p>
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-orange-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- CARD 3 -->
-    <div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-lg">
-      <div class="text-green-400 text-3xl mb-4">🗄️</div>
-      <h3 class="font-bold text-white mb-2">
-        Banco de Dados & ETL
-      </h3>
-      <p class="text-neutral">
-        SQL, queries avançadas e manipulação de dados.
-      </p>
+    <!-- Botão -->
+    <div class="text-center mt-16">
+      <button class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-medium inline-flex items-center gap-2 group">
+        <span>Clique aqui para visualizar meus projetos</span>
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </button>
     </div>
 
-    <!-- CARD 4 -->
-    <div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-lg">
-      <div class="text-orange-400 text-3xl mb-4">💻</div>
-      <h3 class="font-bold text-white mb-2">
-        Programação
-      </h3>
-      <p class="text-neutral">
-        Python e R para análise e processamento de dados.
-      </p>
-    </div>
-
-  </div>
-
-  <!-- BOTÃO -->
-  <div class="mt-12">
-    <a
-      href="#projects"
-      class="inline-block bg-gradient-to-r from-purple-500 to-blue-500 px-8 py-4 rounded-full text-white font-medium"
-    >
-      Clique aqui para visualizar meus projetos →
-    </a>
   </div>
 </section>
