@@ -12,17 +12,17 @@ const { description, image, name } = Astro.props;
     
     <div class="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-20">
       
-      {/* 1. Container da Foto Circular com Fundo Cinza Claro */}
+      <!-- FOTO -->
       {image && (
         <div class="flex-shrink-0 relative order-1 md:order-1">
-          {/* Borda Gradiente Externa */}
+          
+          <!-- Borda gradiente -->
           <div class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-[#8b31ff] via-[#4686fe] to-[#2fd165] shadow-lg shadow-purple-500/30 flex items-center justify-center overflow-hidden">
             
-            {/* Container da Foto com o Fundo Cinza Claro (#e2e8f0) */}
-            {/* Alterado para dar um aspecto mais limpo e destacar o rosto */}
-            <div class="w-full h-full rounded-full overflow-hidden border-4 border-[#e2e8f0] bg-[#e2e8f0]">
+            <!-- FUNDO CINZA + ESPAÇO -->
+            <div class="w-full h-full rounded-full overflow-hidden border-4 border-gray-200 bg-gray-200 p-2">
               <Image
-                class="object-cover w-full h-full scale-105"
+                class="object-cover w-full h-full scale-105 rounded-full"
                 src={image}
                 width={400}
                 height={400}
@@ -30,11 +30,12 @@ const { description, image, name } = Astro.props;
                 loading="lazy"
               />
             </div>
+
           </div>
         </div>
       )}
 
-      {/* 2. Container do Texto */}
+      <!-- TEXTO -->
       <div class="flex-1 text-center md:text-left order-2 md:order-2">
         <h3 class="font-serif text-3xl md:text-4xl font-medium text-white mb-6 tracking-tight">
           Sobre Mim
