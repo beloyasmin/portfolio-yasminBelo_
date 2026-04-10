@@ -26,13 +26,14 @@ export const SITE_CONFIG: SiteConfig = {
 };
 
 export const SITE_CONTENT: SiteContent = {
-  hero: {
-    name: "Yasmin Belo",
-    specialty: "Analista de Dados",
-    summary:
-      "Profissional focada em análise de dados, utilizando Python, SQL e ferramentas de visualização para gerar insights e apoiar decisões estratégicas.",
-    email: "seuemail@email.com",
-  },
+ hero: {
+  name: "Yasmin Belo",
+  specialty: "Analista de Dados",
+  summary:
+    "Profissional focada em análise de dados, utilizando Python, SQL e ferramentas de visualização para gerar insights e apoiar decisões estratégicas.",
+  email: "beloyasmin93@gmail.com",
+  image: "/foto_yasmin.png" 
+},
 
   experience: [
     {
