@@ -78,13 +78,7 @@ export const SITE_CONTENT: SiteContent = {
 
   about: {
     description: `
-      Olá! Sou Yasmin Belo, apaixonada por dados e por transformar informações em insights valiosos.
-
-      Tenho experiência com ferramentas como Python, SQL e plataformas de visualização de dados, criando análises que ajudam na tomada de decisões.
-
-      Estou em constante evolução na área de dados, buscando sempre aprender novas tecnologias e aplicar soluções práticas para problemas reais.
-    `,
-    image: "/alejandro-big.jpg",
+    
   },
 };
 
