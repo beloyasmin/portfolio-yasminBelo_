@@ -1,5 +1,4 @@
 ---
-import Section from "./Section.astro";
 import { Image } from "astro:assets";
 import type { AboutProps, HeroProps } from "@types";
 
@@ -13,24 +12,38 @@ const { description, image, name } = Astro.props;
     
     <div class="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-20">
       
-      {/* 1. Container da Foto Circular com Fundo Ajustado */}
-      <div class="flex-shrink-0 relative order-1 md:order-1">
-        
-        {/* Borda Gradiente Externa (Roxo, Azul e Verde) */}
-        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-[#8b31ff] via-[#4686fe] to-[#2fd165] shadow-lg shadow-purple-500/30 flex items-center justify-center overflow-hidden">
-          
-          {/* Container da Foto com o Fundo Roxo/Azul Vibrante */}
-          {/* Mudamos de #0a101f (preto) para #3d1490 (roxo vibrante da sua imagem) */}
-          <div class="w-full h-full rounded-full overflow-hidden border-4 border-[#3d1490] bg-[#3d1490]">
-            <Image
-              class="object-cover w-full h-full scale-105"
-              src={image}
-              width="400"
-              height="400"
-              alt={`Foto de perfil de ${name}`}
-              loading="lazy"
-            />
+      {/* 1. Container da Foto Circular com Verificação de Segurança */}
+      {image && (
+        <div class="flex-shrink-0 relative order-1 md:order-1">
+          {/* Borda Gradiente Externa */}
+          <div class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-[#8b31ff] via-[#4686fe] to-[#2fd165] shadow-lg shadow-purple-500/30 flex items-center justify-center overflow-hidden">
+            
+            {/* Container da Foto com o Fundo Roxo/Azul Vibrante */}
+            <div class="w-full h-full rounded-full overflow-hidden border-4 border-[#3d1490] bg-[#3d1490]">
+              <Image
+                class="object-cover w-full h-full scale-105"
+                src={image}
+                width={400}
+                height={400}
+                alt={`Foto de perfil de ${name}`}
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
+      )}
+
+      {/* 2. Container do Texto */}
+      <div class="flex-1 text-center md:text-left order-2 md:order-2">
+        <h3 class="font-serif text-3xl md:text-4xl font-medium text-white mb-6 tracking-tight">
+          Sobre Mim
+        </h3>
+        
+        <p class="text-base md:text-lg text-neutral leading-relaxed max-w-2xl mx-auto md:mx-0">
+          {description}
+        </p>
       </div>
-</Section>
+
+    </div>
+  </div>
+</section>
