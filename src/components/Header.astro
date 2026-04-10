@@ -13,7 +13,7 @@ const { siteLogo, navLinks } = Astro.props;
   <a href="/" aria-label="Home link">
     <Image
       class="rounded-full"
-      src={siteLogo}
+      {siteLogo && <img src={siteLogo} alt="logo" />}
       width="45"
       height="45"
       alt="website logo"
