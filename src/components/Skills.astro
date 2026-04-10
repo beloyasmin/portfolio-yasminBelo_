@@ -1,64 +1,85 @@
---- 
-import { Image } from "astro:assets"; 
-import type { AboutProps, HeroProps } from "@types"; 
-type Props = AboutProps & Pick<HeroProps, "name">; 
-const { description, image, name } = Astro.props; 
 ---
-<section id="about" class="py-24 bg-[#f1f5f9] scroll-mt-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
 
-  <div class="px-6 md:px-12 lg:px-20">
-    
+---
+
+<section id="skills" class="py-24 bg-[#f1f5f9] scroll-mt-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+
+  <div class="max-w-[90%] mx-auto px-4 md:px-8">
+
+    <!-- TÍTULO -->
     <div class="text-center mb-16">
-      <h2 class="text-[#1e293b] text-4xl font-bold mb-2">Sobre Mim</h2>
+      <h2 class="text-[#1e293b] text-4xl font-bold mb-2">Habilidades</h2>
       <div class="w-20 h-1 bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] mx-auto"></div>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-7xl mx-auto">
-      
+    <!-- GRID PRINCIPAL -->
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
       <!-- TEXTO -->
       <div class="space-y-8 w-full">
+
         <p class="text-[#64748b] text-lg leading-relaxed">
-          Seja muito bem-vindo(a) ao meu portfólio. Conheça um pouco da minha trajetória:
+          Minhas principais competências estão focadas em transformar dados em decisões estratégicas.
         </p>
 
+        <!-- CARD DE DESTAQUE -->
         <div class="bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] rounded-3xl p-12 text-center shadow-xl shadow-blue-500/20 w-full">
           <span class="text-white text-7xl font-bold block mb-2">10+</span>
-          <span class="text-white/90 text-2xl font-medium">Anos de Experiência</span>
+          <span class="text-white/90 text-2xl font-medium">Tecnologias e Ferramentas</span>
         </div>
 
         <div class="space-y-6 text-[#64748b] text-lg leading-relaxed">
-          <p>{description}</p>
           <p>
-            Atualmente, foco na evolução constante das minhas habilidades técnicas para entregar soluções que não apenas organizam informações, mas geram valor concreto e inovação para o negócio.
+            Experiência sólida com ferramentas de análise de dados, visualização e construção de dashboards interativos.
+          </p>
+          <p>
+            Foco em gerar valor através de insights claros e decisões orientadas por dados.
           </p>
         </div>
+
       </div>
 
       <!-- CARDS -->
       <div class="grid sm:grid-cols-2 gap-6 w-full">
-        
+
+        <!-- BI -->
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
+          <div class="text-[#8b31ff] mb-4">
+            📊
+          </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Business Intelligence</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
             Desenvolvimento de soluções de BI para apoiar decisões estratégicas
           </p>
         </div>
 
+        <!-- Dados -->
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
+          <div class="text-[#3b82f6] mb-4">
+            🗄️
+          </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Análise de Dados</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
-            Transformação de dados brutos em insights valiosos para o negócio
+            Transformação de dados brutos em insights valiosos
           </p>
         </div>
 
+        <!-- Dashboards -->
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
+          <div class="text-[#22c55e] mb-4">
+            📈
+          </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Dashboards</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
             Criação de painéis interativos e visualizações impactantes
           </p>
         </div>
 
+        <!-- Consultoria -->
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
+          <div class="text-[#f59e0b] mb-4">
+            👥
+          </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Consultoria</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
             Orientação estratégica em projetos de dados e analytics
@@ -68,5 +89,7 @@ const { description, image, name } = Astro.props;
       </div>
 
     </div>
+
   </div>
+
 </section>
