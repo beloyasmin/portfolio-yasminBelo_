@@ -5,11 +5,12 @@ import { Image } from "astro:assets";
 const { name, specialty, summary, email, image } = Astro.props;
 ---
 
-<section id="hero" class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-[--image-hero-gradient] py-24 md:py-32 overflow-hidden scroll-mt-24">
+<section id="hero" class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-[--background-image-hero-gradient] py-24 md:py-32 overflow-hidden scroll-mt-24">
   
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-20">
       
+      {/* 1. FOTO CIRCULAR */}
       {image && (
         <div class="flex-shrink-0 relative order-1 md:order-1">
           <div class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-[#8b31ff] via-[#4686fe] to-[#2fd165] shadow-[--shadow-hero-glow] flex items-center justify-center">
@@ -27,6 +28,7 @@ const { name, specialty, summary, email, image } = Astro.props;
         </div>
       )}
 
+      {/* 2. CONTEÚDO */}
       <div class="flex-1 text-center md:text-left order-2 md:order-2">
         <span class="text-white/80 text-lg font-light mb-2 block">Olá! Meu nome é</span>
         <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
@@ -41,6 +43,7 @@ const { name, specialty, summary, email, image } = Astro.props;
           {summary}
         </p>
 
+        {/* BOTÕES PRINCIPAIS */}
         <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-14">
           <a href="#about" class="bg-[#8b31ff] hover:bg-[#7a28e0] text-white px-8 py-3 rounded-xl font-medium transition-all hover:scale-105 shadow-lg shadow-purple-500/20">
             Sobre Mim →
@@ -53,16 +56,30 @@ const { name, specialty, summary, email, image } = Astro.props;
           </a>
         </div>
 
+        {/* RODAPÉ DE CONTATOS RÁPIDOS */}
         <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-white/70 text-sm border-t border-white/5 pt-8">
-          <div class="flex items-center gap-2">
-             <span class="text-[#2fd165] text-lg">📞</span> (21) 99350-6065
-          </div>
-          <div class="flex items-center gap-2">
-             <span class="text-[#4686fe] font-bold text-lg">in</span> /SmaleyMarques
-          </div>
-          <a href={`mailto:${email}`} class="flex items-center gap-2 hover:text-white transition">
+          
+          {/* Link para WhatsApp/Telefone */}
+          <a href="https://wa.me/5521991435429" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+             <span class="text-[#2fd165] text-lg">📞</span> (21) 99143-5429
+          </a>
+
+          {/* Link para LinkedIn */}
+          <a 
+            href="https://www.linkedin.com/in/YasminBelo" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="flex items-center gap-2 hover:text-white transition-colors group"
+          >
+            <span class="text-[#4686fe] font-bold text-lg group-hover:scale-110 transition-transform">in</span> 
+            <span class="hover:underline">/SmaleyMarques</span>
+          </a>
+
+          {/* Link para E-mail */}
+          <a href={`mailto:${email}`} class="flex items-center gap-2 hover:text-white transition-colors">
              <span class="text-purple-400 text-lg">✉️</span> {email}
           </a>
+
         </div>
       </div>
 
