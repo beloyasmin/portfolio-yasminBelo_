@@ -77,8 +77,14 @@ export const SITE_CONTENT: SiteContent = {
   ],
 
   about: {
-    description: `
-    
+    description: 
+    `
+  Olá! Sou Yasmin Belo, apaixonada por dados...
+
+  Tenho experiência com Python, SQL...
+
+  Estou em constante evolução...
+`,
   },
 };
 
