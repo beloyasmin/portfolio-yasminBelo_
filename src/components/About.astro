@@ -14,13 +14,15 @@ const { description, image, name } = Astro.props;
     <div
       class="h-80 w-64 flex-shrink-0 rotate-[5deg] bg-white p-4 md:rotate-[7deg]"
     >
-      <Image
-        class="object-cover"
-        src={image}
-        width="260"
-        height="260"
-        alt={name}
-      />
+      {image && (
+  <Image
+    src={image}
+    width="260"
+    height="260"
+    class="object-cover"
+    alt="about image"
+  />
+)}
     </div>
   </div>
 </Section>
