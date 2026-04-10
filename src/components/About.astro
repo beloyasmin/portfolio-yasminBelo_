@@ -8,21 +8,29 @@ type Props = AboutProps & Pick<HeroProps, "name">;
 const { description, image, name } = Astro.props;
 ---
 
-<section id="about" class="scroll-mt-24">
-  <div class="flex flex-col items-center gap-12 md:flex-row md:gap-8">
-    <p class="w-auto text-base text-neutral md:pr-5">{description}</p>
-    <div
-      class="h-80 w-64 flex-shrink-0 rotate-[5deg] bg-white p-4 md:rotate-[7deg]"
-    >
-      {image && (
-  <Image
-    src={image}
-    width="260"
-    height="260"
-    class="object-cover"
-    alt="about image"
-  />
-)}
-    </div>
-  </div>
+<section id="about" class="scroll-mt-24 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+    
+    <div class="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-20">
+      
+      {/* 1. Container da Foto Circular com Fundo Ajustado */}
+      <div class="flex-shrink-0 relative order-1 md:order-1">
+        
+        {/* Borda Gradiente Externa (Roxo, Azul e Verde) */}
+        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-[#8b31ff] via-[#4686fe] to-[#2fd165] shadow-lg shadow-purple-500/30 flex items-center justify-center overflow-hidden">
+          
+          {/* Container da Foto com o Fundo Roxo/Azul Vibrante */}
+          {/* Mudamos de #0a101f (preto) para #3d1490 (roxo vibrante da sua imagem) */}
+          <div class="w-full h-full rounded-full overflow-hidden border-4 border-[#3d1490] bg-[#3d1490]">
+            <Image
+              class="object-cover w-full h-full scale-105"
+              src={image}
+              width="400"
+              height="400"
+              alt={`Foto de perfil de ${name}`}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
 </Section>
