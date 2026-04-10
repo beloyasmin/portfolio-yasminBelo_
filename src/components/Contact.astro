@@ -32,22 +32,28 @@ const { email } = Astro.props;
             </div>
           </a>
 
-          <a href={`mailto:${email}`} class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-[#8b31ff] text-xl group-hover:scale-110 transition-transform">✉️</div>
-              <div>
-                <p class="text-[#1e293b] font-bold text-xs uppercase tracking-wider">E-mail</p>
-                <p class="text-[#8b31ff] text-sm font-medium">{email}</p>
-              </div>
-            </div>
-          </a>
+          <a href={`mailto:beloyasmin17@gmail.com`} class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
+  <div class="flex items-center gap-4">
+    {/* Ícone em estilo Esboço (Outline) */}
+    <div class="w-10 h-10 border-2 border-purple-200 rounded-lg flex items-center justify-center text-[#8b31ff] text-xl group-hover:scale-110 transition-transform bg-transparent">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+      </svg>
+    </div>
+    <div>
+      <p class="text-[#1e293b] font-bold text-xs uppercase tracking-wider">E-mail</p>
+      {/* Texto do e-mail posicionado embaixo */}
+      <p class="text-[#8b31ff] text-sm font-medium break-all">beloyasmin17@gmail.com</p>
+    </div>
+  </div>
+</a>
 
-          <a href="https://www.linkedin.com/in/SmaleyMarques" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
+          <a href="https://www.linkedin.com/in/YasminBelo" target="_blank" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#3b82f6] font-bold group-hover:scale-110 transition-transform">in</div>
               <div>
                 <p class="text-[#1e293b] font-bold text-xs uppercase tracking-wider">LinkedIn</p>
-                <p class="text-[#3b82f6] text-sm font-medium">/SmaleyMarques</p>
+                <p class="text-[#3b82f6] text-sm font-medium">/YasminBelo</p>
               </div>
             </div>
           </a>
