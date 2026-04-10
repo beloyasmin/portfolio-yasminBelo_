@@ -6,7 +6,7 @@ export const SITE_CONFIG: SiteConfig = {
   description:
     "Analista de Dados especializada em transformar dados em insights estratégicos.",
   lang: "pt-BR",
-  siteLogo: "/alejandro-small.jpg",
+  
 
   navLinks: [
     { text: "Home", href: "#hero" },
