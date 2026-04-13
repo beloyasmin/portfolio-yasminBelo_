@@ -26,11 +26,15 @@ const { projects } = Astro.props;
     <!-- CARDS -->
     <div class="grid md:grid-cols-3 gap-10 w-full">
 
-      {projects.map((project, index) => (
-        <div class="bg-[#1c2333] rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 w-full">
+      {projects.map((project: Project, index: number) => (
+        <div class="bg-[#1c2333] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-purple-500/20 transition duration-300 w-full">
 
           <!-- IMAGEM -->
-          <img src={project.image} alt={project.name} class="w-full h-56 object-cover"/>
+          <img
+            src={project.image}
+            alt={project.name}
+            class="w-full h-56 object-cover"
+          />
 
           <!-- CONTEÚDO -->
           <div class="p-6">
@@ -71,7 +75,7 @@ const { projects } = Astro.props;
       <!-- IMAGEM -->
       <img id="modalImage" class="w-full rounded-lg mb-6"/>
 
-      <!-- OBJETIVOS -->
+      <!-- DESCRIÇÃO -->
       <h4 class="font-semibold mb-2">Descrição:</h4>
       <p id="modalDesc" class="text-gray-300 mb-6"></p>
 
@@ -87,8 +91,17 @@ const { projects } = Astro.props;
     </div>
   </div>
 
+  <!-- DADOS DOS PROJETOS -->
+  <script id="projects-data" type="application/json">
+    {JSON.stringify(projects)}
+  </script>
+
   <!-- SCRIPT -->
-  <script define:vars={{ projects }}>
+  <script is:inline>
+    const projectsData = JSON.parse(
+      document.getElementById("projects-data").textContent
+    );
+
     function openModal(index) {
       const modal = document.getElementById("modal");
       const title = document.getElementById("modalTitle");
@@ -96,7 +109,7 @@ const { projects } = Astro.props;
       const desc = document.getElementById("modalDesc");
       const link = document.getElementById("modalLink");
 
-      const project = projects[index];
+      const project = projectsData[index];
 
       if (!modal || !title || !image || !desc || !link) return;
 
