@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import type { ProjectProps } from "@types";
 
 interface Props {
@@ -15,7 +14,7 @@ const { projects } = Astro.props;
     <h2 class="text-4xl font-bold">Portfólio de Projetos</h2>
     <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-4 rounded"></div>
     <p class="text-gray-400 mt-6 max-w-xl mx-auto">
-      Conheça alguns dos principais projetos desenvolvidos com foco em Business Intelligence e análise de dados
+      Conheça alguns dos meus projetos em dados e BI
     </p>
   </div>
 
@@ -27,7 +26,7 @@ const { projects } = Astro.props;
           
           <!-- IMAGEM -->
           <div class="h-52 overflow-hidden">
-            <Image
+            <img
               src={project.image}
               alt={project.name}
               class="w-full h-full object-cover hover:scale-105 transition duration-300"
@@ -85,8 +84,9 @@ const { projects } = Astro.props;
 <!-- SCRIPT -->
 <script is:inline>
   function openModal(index) {
-    const projectsData = JSON.parse(document.getElementById("projects-data").textContent);
-    const project = projectsData[index];
+    const data = document.getElementById("projects-data");
+    const projects = JSON.parse(data.textContent);
+    const project = projects[index];
 
     const modal = document.getElementById("modal");
     const title = document.getElementById("modalTitle");
@@ -111,7 +111,7 @@ const { projects } = Astro.props;
   }
 </script>
 
-<!-- DADOS PARA JS -->
-<script id="projects-data" type="application/json">
+<!-- DADOS PARA O SCRIPT -->
+<script id="projects-data" type="application/json" is:inline>
   {JSON.stringify(projects)}
 </script>
