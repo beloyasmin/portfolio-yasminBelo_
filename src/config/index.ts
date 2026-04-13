@@ -54,14 +54,23 @@ export const SITE_CONTENT: SiteContent = {
     name: "Dashboard Comercial",
     summary:
       "Análise de vendas, margem de lucro e performance com foco em indicadores estratégicos.",
-    image: "/dashboard1.png",
+    image: "/dashboard2.png",
     linkPreview: "https://app.powerbi.com/SEU-LINK-1",
   },
   {
     name: "Dashboard Logístico",
+    category: "Dashboard Comercial",
     summary:
       "Monitoramento de entregas, custos logísticos e eficiência operacional.",
-    image: "/dashboard2.png",
+    descriptionModal: "Dashboard completo para análise comercial com foco em faturamento, margem de lucro e performance de vendedores. Permite identificar tendências de mercado e pontos de melhoria na conversão de vendas.",
+    objectives: [
+        "Acompanhar faturamento mensal e anual",
+        "Análise da margem de lucro por categoria",
+        "Performance individual da equipe de vendas",
+        "Identificação de produtos curva A"
+      ],
+    indicators: ["Power BI", "SQL", "DAX"],
+    image: "/dashboard1.png",
     linkPreview: "https://app.powerbi.com/SEU-LINK-2",
   },
   {
