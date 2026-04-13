@@ -13,17 +13,20 @@ interface Project {
 const { projects } = Astro.props;
 ---
 
-<section id="projects" class="w-full py-24 bg-[#0b1324] bg-gradient-to-b from-[#0b1324] via-[#0d1529] to-[#0b1324] text-white scroll-mt-24 overflow-hidden">
-  
-  <div class="max-w-[1440px] mx-auto px-6 md:px-12">
-    
+<section id="projects" class="w-full py-24 bg-[#0b1324] bg-gradient-to-b from-[#0b1324] via-[#0d1529] to-[#0b1324] text-white scroll-mt-24">
+
+  <!-- REMOVE max-width -->
+  <div class="w-full px-6 md:px-12">
+
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold mb-4 tracking-tight">Portfólio de Projetos</h2>
+
       <div class="flex justify-center items-center gap-2 mb-6">
         <div class="w-12 h-1 bg-purple-500 rounded-full"></div>
         <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
         <div class="w-12 h-1 bg-purple-500 rounded-full"></div>
       </div>
+
       <p class="text-gray-400 text-lg max-w-2xl mx-auto">
         Conheça alguns dos principais projetos desenvolvidos com foco em Business Intelligence e análise de dados
       </p>
