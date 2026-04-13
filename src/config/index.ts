@@ -1,86 +1,62 @@
 import type { SiteConfig, SiteContent } from "../types";
 
-export const SITE_CONFIG: SiteConfig = {
-  title: "Yasmin Belo — Analista de Dados",
-  author: "Yasmin Belo",
-  description:
-    "Analista de Dados especializada em transformar dados em insights estratégicos.",
-  lang: "pt-BR",
-  
-
-  navLinks: [
-    { text: "Home", href: "#hero" },
-    { text: "Sobre Mim", href: "#about" },
-    { text: "Habilidades", href: "#skills" },
-    { text: "Projetos", href: "#projects" },
-    { text: "Contato", href: "#contact" },
-  ],
-
-  socialLinks: [
-    { text: "LinkedIn", href: "SEU_LINK_LINKEDIN" },
-    { text: "GitHub", href: "SEU_LINK_GITHUB" },
-  ],
-
-  socialImage: "/zen-og.png",
-  canonicalURL: "https://portfolio-yasmin-belo.vercel.app",
-};
-
 export const SITE_CONTENT: SiteContent = {
- hero: {
-  name: "Yasmin Belo",
-  specialty: "Analista de Dados",
-  summary:
-    "Profissional focada em análise de dados, utilizando Python, SQL e ferramentas de visualização para gerar insights e apoiar decisões estratégicas.",
-  email: "beloyasmin93@gmail.com",
-  image: "/foto_yasmin.png" 
-},
+  hero: {
+    name: "Yasmin Belo",
+    specialty: "Analista de Dados",
+    summary:
+      "Profissional focada em análise de dados, utilizando Python, SQL e ferramentas de visualização para gerar insights e apoiar decisões estratégicas.",
+    email: "beloyasmin93@gmail.com",
+    image: "/foto_yasmin.png" 
+  },
 
-  experience: [
-    {
-      company: "Projeto Pessoal",
-      position: "Analista de Dados",
-      startDate: "2024",
-      endDate: "Atual",
-      summary: [
-        "Realizei análise de dados utilizando Python e Pandas para identificar padrões e tendências.",
-        "Criei dashboards interativos para visualização de dados e apoio à tomada de decisão.",
-        "Utilizei SQL para extração e manipulação de dados em bancos relacionais.",
-      ],
-    },
-  ],
+  // DEIXANDO VAZIO PARA NÃO APARECER A SEÇÃO DE EXPERIÊNCIA ANTERIOR
+  experience: [],
 
   projects: [
-  {
-    name: "Dashboard Comercial",
-    summary:
-      "Análise de vendas, margem de lucro e performance com foco em indicadores estratégicos.",
-    image: "/dashboard2.png",
-    linkPreview: "https://app.powerbi.com/SEU-LINK-1",
-  },
-  {
-    name: "Dashboard Logístico",
-    category: "Dashboard Comercial",
-    summary:
-      "Monitoramento de entregas, custos logísticos e eficiência operacional.",
-    descriptionModal: "Dashboard completo para análise comercial com foco em faturamento, margem de lucro e performance de vendedores. Permite identificar tendências de mercado e pontos de melhoria na conversão de vendas.",
-    objectives: [
+    {
+      name: "Dashboard Comercial",
+      category: "Comercial",
+      summary: "Análise de vendas, margem de lucro e performance com foco em indicadores estratégicos.",
+      descriptionModal: "Análise detalhada de performance comercial, permitindo a visualização de KPIs de faturamento e rentabilidade por canal e vendedor.",
+      objectives: [
         "Acompanhar faturamento mensal e anual",
         "Análise da margem de lucro por categoria",
-        "Performance individual da equipe de vendas",
-        "Identificação de produtos curva A"
+        "Performance individual da equipe"
       ],
-    indicators: ["Power BI", "SQL", "DAX"],
-    image: "/dashboard1.png",
-    linkPreview: "https://app.powerbi.com/SEU-LINK-2",
-  },
-  {
-    name: "Dashboard Financeiro",
-    summary:
-      "Análise financeira completa com indicadores de receita, despesas e lucratividade.",
-    image: "/dashboard3.png",
-    linkPreview: "https://app.powerbi.com/SEU-LINK-3",
-  },
-],
+      indicators: ["Power BI", "SQL", "DAX"],
+      image: "/dashboard2.png",
+      linkPreview: "https://app.powerbi.com/SEU-LINK-1",
+    },
+    {
+      name: "Dashboard Logístico",
+      category: "Logística",
+      summary: "Monitoramento de entregas, custos logísticos e eficiência operacional.",
+      descriptionModal: "Dashboard completo para análise logística com foco em fretes, tempos de entrega e performance de transportadoras.",
+      objectives: [
+        "Acompanhar Lead Time de entrega",
+        "Monitoramento de custos de frete",
+        "Otimização de rotas e performance"
+      ],
+      indicators: ["Power BI", "Python", "SQL"],
+      image: "/dashboard1.png",
+      linkPreview: "https://app.powerbi.com/SEU-LINK-2",
+    },
+    {
+      name: "Dashboard Financeiro",
+      category: "Financeiro",
+      summary: "Análise financeira completa com indicadores de receita, despesas e lucratividade.",
+      descriptionModal: "Painel estratégico para gestão de fluxo de caixa, DRE e indicadores de liquidez e endividamento.",
+      objectives: [
+        "Acompanhamento de Receita vs Despesa",
+        "Análise de Lucratividade por período",
+        "Gestão de fluxo de caixa e inadimplência"
+      ],
+      indicators: ["Excel", "Power BI", "Financeiro"],
+      image: "/dashboard3.png",
+      linkPreview: "https://app.powerbi.com/SEU-LINK-3",
+    },
+  ],
 
   about: {
     description: 
@@ -93,5 +69,3 @@ export const SITE_CONTENT: SiteContent = {
 `,
   },
 };
-
-// #5755ff
