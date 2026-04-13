@@ -33,6 +33,10 @@ export interface ExperienceProps {
 
 export interface ProjectProps {
   name: string;
+  category?: string;
+  descriptionModal?: string;
+  objectives?: string[];
+  indicators?: string[];
   summary: string;
   image: string;
   linkPreview?: string;
