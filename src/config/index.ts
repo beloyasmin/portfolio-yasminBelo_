@@ -50,31 +50,28 @@ export const SITE_CONTENT: SiteContent = {
   ],
 
   projects: [
-    {
-      name: "Análise de Churn",
-      summary:
-        "Projeto de análise de evasão de clientes utilizando Python e técnicas de análise exploratória.",
-      linkPreview: "/",
-      linkSource: "SEU_LINK_GITHUB",
-      image: "/spotifu.png",
-    },
-    {
-      name: "Dashboard de Vendas",
-      summary:
-        "Dashboard interativo com indicadores de vendas e faturamento para análise de desempenho.",
-      linkPreview: "/",
-      linkSource: "SEU_LINK",
-      image: "/shopify-clon.png",
-    },
-    {
-      name: "Análise de Dados com SQL",
-      summary:
-        "Consultas e manipulação de dados para geração de insights estratégicos.",
-      linkPreview: "/",
-      linkSource: "SEU_LINK",
-      image: "/clone-ig.png",
-    },
-  ],
+  {
+    name: "Dashboard Comercial",
+    summary:
+      "Análise de vendas, margem de lucro e performance com foco em indicadores estratégicos.",
+    image: "/dashboard1.png",
+    linkPreview: "https://app.powerbi.com/SEU-LINK-1",
+  },
+  {
+    name: "Dashboard Logístico",
+    summary:
+      "Monitoramento de entregas, custos logísticos e eficiência operacional.",
+    image: "/dashboard2.png",
+    linkPreview: "https://app.powerbi.com/SEU-LINK-2",
+  },
+  {
+    name: "Dashboard Financeiro",
+    summary:
+      "Análise financeira completa com indicadores de receita, despesas e lucratividade.",
+    image: "/dashboard3.png",
+    linkPreview: "https://app.powerbi.com/SEU-LINK-3",
+  },
+],
 
   about: {
     description: 
