@@ -109,30 +109,53 @@ const { name, specialty, summary, email, image } = Astro.props;
     from, to { opacity: 1; }
     50% { opacity: 0; }
   }
+<style>
+  /* Estilo base do cursor */
+  #cursor {
+    display: inline-block;
+    color: #8b31ff;
+    animation: blink 1s step-end infinite;
+    margin-left: 4px;
+    font-weight: 200;
+    transition: opacity 0.2s ease;
+  }
+
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
 </style>
 
 <script>
-  // Lógica da máquina de escrever
-  const typeElement = document.getElementById('typewriter');
-  const cursorElement = document.getElementById('cursor');
-  const text = typeElement?.getAttribute('data-name') || "";
-  let i = 0;
+  function startTypewriter() {
+    const typeElement = document.getElementById('typewriter');
+    const cursorElement = document.getElementById('cursor');
+    
+    if (!typeElement || !cursorElement) return;
 
-  function typeWriter() {
-    if (i < text.length) {
-      if (typeElement) {
-        typeElement.textContent += text.charAt(i); // Usando textContent para segurança
+    const text = typeElement.getAttribute('data-name') || "";
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        typeElement.textContent += text.charAt(i);
         i++;
-        setTimeout(typeWriter, 120); // Velocidade da digitação (ms)
-      }
-    } else {
-      // Quando termina de escrever, oculta o cursor IMEDIATAMENTE
-      if (cursorElement) {
-        cursorElement.classList.add('cursor-hidden');
+        setTimeout(type, 120);
+      } else {
+        // --- A SOLUÇÃO DEFINITIVA ---
+        // 1. Remove a animação de piscar
+        cursorElement.style.animation = "none";
+        // 2. Torna invisível
+        cursorElement.style.opacity = "0";
+        // 3. Remove do layout para não sobrar espaço vazio
+        cursorElement.style.display = "none";
       }
     }
+
+    type();
   }
 
-  // Inicia a animação ao carregar o DOM
-  window.addEventListener('DOMContentLoaded', typeWriter);
+  // Executa ao carregar e também garante execução em transições do Astro
+  window.addEventListener('DOMContentLoaded', startTypewriter);
+  document.addEventListener('astro:after-swap', startTypewriter);
 </script>
