@@ -3,49 +3,71 @@ import { Image } from "astro:assets";
 
 interface Project {
   name: string;
+  category: string;
   summary: string;
+  descriptionModal: string;
+  objectives: string[];
+  indicators: string[]; 
   image: string;
   linkPreview: string;
-  objectives?: string[]; // Adicionei para suportar a lista de objetivos das imagens
 }
 
 const { projects } = Astro.props;
 ---
 
-<section id="projects" class="py-20 bg-[#0b1324] text-white w-full">
-  <div class="max-w-[90%] mx-auto px-6"> <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold">Portfólio de Projetos</h2>
-      <div class="w-20 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>
-      <p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+<section id="projects" class="py-24 bg-[#0b1324] text-white scroll-mt-24 w-full">
+  <div class="max-w-[90%] mx-auto px-4 md:px-8">
+    
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">Portfólio de Projetos</h2>
+      <div class="flex justify-center items-center gap-2 mb-6">
+        <div class="w-12 h-1 bg-purple-500 rounded-full"></div>
+        <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+        <div class="w-12 h-1 bg-purple-500 rounded-full"></div>
+      </div>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
         Conheça alguns dos principais projetos desenvolvidos com foco em Business Intelligence e análise de dados
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
       {projects.map((project: Project, index: number) => (
-        <div class="bg-[#1c2333] rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:shadow-purple-500/20 transition duration-300 w-full flex flex-col">
+        <div class="bg-[#1c2333] rounded-2xl overflow-hidden border border-gray-800 flex flex-col h-full group transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
           
-          <img
-            src={project.image}
-            alt={project.name}
-            class="w-full h-56 object-cover"
-          />
+          <div class="relative overflow-hidden aspect-video border-b border-gray-800">
+            <img 
+              src={project.image} 
+              alt={project.name} 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          </div>
 
-          <div class="p-6 flex-grow flex flex-col">
-            <span class="w-fit text-sm bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full italic">
-              Projeto
+          <div class="p-6 flex flex-col flex-grow">
+            <span class="w-fit text-[10px] uppercase tracking-[2px] text-purple-400 font-bold mb-4 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">
+              {project.category || "Dashboard"}
             </span>
+            
+            <h3 class="text-xl font-bold mb-4 uppercase tracking-tight">{project.name}</h3>
 
-            <h3 class="text-xl font-bold mt-4">{project.name}</h3>
-
-            <p class="text-gray-400 mt-3 text-sm line-clamp-3">
-              {project.summary}
-            </p>
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-gray-300 mb-2">Objetivos principais:</h4>
+              <ul class="space-y-1">
+                {project.objectives && project.objectives.slice(0, 2).map((obj) => (
+                  <li class="text-xs text-gray-400 flex items-center gap-2">
+                    <span class="w-1 h-1 bg-purple-500 rounded-full"></span> {obj}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <button
-              class="open-modal-btn mt-auto w-full py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 hover:opacity-90 transition font-medium"
+              class="open-modal-btn mt-auto w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-purple-500/20"
               data-index={index}
             >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.644C3.399 8.049 7.21 5 12 5c4.79 0 8.601 3.049 9.964 6.678.056.19.056.446 0 .644C20.601 15.951 16.79 19 12 19c-4.79 0-8.601-3.049-9.964-6.678z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
               Ver detalhes
             </button>
           </div>
@@ -54,91 +76,94 @@ const { projects } = Astro.props;
     </div>
   </div>
 
-  <div id="modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[100] p-4 backdrop-blur-sm">
-    <div class="bg-[#1c2333] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative shadow-2xl border border-gray-700">
+  <div id="projectModal" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-[100] p-4 backdrop-blur-sm">
+    <div class="bg-[#1c2333] rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative border border-gray-700 shadow-2xl">
       
-      <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition z-10 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+      <div class="flex items-center justify-between p-6 border-b border-gray-800 sticky top-0 bg-[#1c2333] z-10">
+        <h3 id="modalTitle" class="text-xl font-bold text-purple-400 uppercase tracking-wider"></h3>
+        <button id="closeModal" class="text-gray-400 hover:text-white p-1 border border-gray-700 rounded-md transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
 
       <div class="p-8">
-        <h3 id="modalTitle" class="text-2xl font-bold mb-6 text-purple-400 uppercase tracking-wider"></h3>
-
-        <div class="rounded-xl overflow-hidden mb-6 border border-gray-700">
-            <img id="modalImage" class="w-full h-auto object-contain bg-[#0b1324]"/>
+        <div class="rounded-lg overflow-hidden border border-gray-800 bg-[#0b1324] mb-8 shadow-inner">
+          <img id="modalImage" class="w-full h-auto object-contain max-h-[350px] mx-auto transition-opacity duration-300"/>
         </div>
 
-        <div class="space-y-4">
-            <div>
-                <h4 class="font-bold text-white mb-2">Descrição:</h4>
-                <p id="modalDesc" class="text-gray-300 text-sm leading-relaxed"></p>
-            </div>
-            
-            <a
-              id="modalLink"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center justify-center gap-2 w-full py-4 mt-6 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all shadow-lg"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              Ver Projeto
-            </a>
+        <div class="mb-8">
+          <h4 class="text-white font-bold mb-4 text-lg">Objetivos Completos:</h4>
+          <ul id="modalObjectives" class="space-y-3">
+            </ul>
         </div>
+
+        <div class="mb-10">
+          <h4 class="text-white font-bold mb-3 text-lg">Descrição:</h4>
+          <p id="modalDesc" class="text-gray-400 text-sm leading-relaxed"></p>
+        </div>
+
+        <a id="modalLink" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-4 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-all uppercase tracking-widest text-sm shadow-lg shadow-purple-600/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          Ver Projeto
+        </a>
       </div>
     </div>
   </div>
 
   <script is:inline define:vars={{ projects }}>
-    const modal = document.getElementById("modal");
+    const modal = document.getElementById("projectModal");
     const closeBtn = document.getElementById("closeModal");
     const title = document.getElementById("modalTitle");
     const image = document.getElementById("modalImage");
     const desc = document.getElementById("modalDesc");
+    const objectivesList = document.getElementById("modalObjectives");
     const link = document.getElementById("modalLink");
 
     function openModal(index) {
-      const project = projects[index];
-      if (!project) return;
+      const p = projects[index];
+      if (!p) return;
 
-      title.textContent = project.name;
-      image.src = project.image;
-      desc.textContent = project.summary;
-      link.href = project.linkPreview;
+      title.textContent = p.name;
+      image.src = p.image;
+      // Exibe a descrição detalhada se existir, senão usa o resumo
+      desc.textContent = p.descriptionModal || p.summary;
+      link.href = p.linkPreview;
+
+      // Limpa e reconstrói a lista de objetivos com marcadores roxos
+      objectivesList.innerHTML = "";
+      if (p.objectives) {
+        p.objectives.forEach(obj => {
+          const li = document.createElement("li");
+          li.className = "flex items-start gap-3 text-sm text-gray-300";
+          li.innerHTML = `<span class="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(168,85,247,0.5)]"></span> <span>${obj}</span>`;
+          objectivesList.appendChild(li);
+        });
+      }
 
       modal.classList.remove("hidden");
       modal.classList.add("flex");
-      document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+      document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
       modal.classList.add("hidden");
       modal.classList.remove("flex");
-      document.body.style.overflow = 'auto'; // Destrava o scroll
+      document.body.style.overflow = "auto";
     }
 
-    // Adiciona evento em todos os botões de "Ver Detalhes"
+    // Configura os ouvintes de evento
     document.querySelectorAll(".open-modal-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const index = btn.getAttribute("data-index");
-        openModal(index);
-      });
+      btn.addEventListener("click", () => openModal(btn.dataset.index));
     });
 
-    // Evento de fechar
     closeBtn.addEventListener("click", closeModal);
-
-    // Fechar clicando fora do conteúdo
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    // Fechar com a tecla Esc
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
+    
+    // Fechar ao clicar fora ou apertar Esc
+    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
   </script>
 </section>
