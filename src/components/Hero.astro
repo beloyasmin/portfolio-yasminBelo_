@@ -29,8 +29,10 @@ const { name, specialty, summary, email, image } = Astro.props;
 
       <div class="flex-1 text-center md:text-left order-2 md:order-2">
         <span class="text-white/80 text-lg font-light mb-2 block">Olá! Meu nome é</span>
-        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
-          {name}
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight min-h-[1.2em]">
+          <span id="typewriter" data-name={name}></span>
+          <span class="cursor">|</span>
         </h1>
         
         <p class="text-xl md:text-2xl text-primary font-bold mb-4">
@@ -83,3 +85,38 @@ const { name, specialty, summary, email, image } = Astro.props;
     </div>
   </div>
 </section>
+
+<style>
+  /* Efeito de piscar do cursor */
+  .cursor {
+    display: inline-block;
+    color: #8b31ff;
+    animation: blink 1s step-end infinite;
+    margin-left: 4px;
+  }
+
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>
+
+<script>
+  // Lógica da máquina de escrever
+  const element = document.getElementById('typewriter');
+  const text = element?.getAttribute('data-name') || "";
+  let i = 0;
+
+  function typeWriter() {
+    if (i < text.length) {
+      if (element) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 150); // Velocidade da digitação (ms)
+      }
+    }
+  }
+
+  // Inicia a animação
+  window.addEventListener('DOMContentLoaded', typeWriter);
+</script>
