@@ -1,5 +1,25 @@
 import type { SiteConfig, SiteContent } from "../types";
 
+export const SITE_CONFIG: SiteConfig = {
+  title: "Yasmin Belo — Analista de Dados",
+  author: "Yasmin Belo",
+  description: "Analista de Dados especializada em transformar dados em insights estratégicos.",
+  lang: "pt-BR",
+  navLinks: [
+    { text: "Home", href: "#hero" },
+    { text: "Sobre Mim", href: "#about" },
+    { text: "Habilidades", href: "#skills" },
+    { text: "Projetos", href: "#projects" },
+    { text: "Contato", href: "#contact" },
+  ],
+  socialLinks: [
+    { text: "LinkedIn", href: "https://linkedin.com/in/yasminbelo" }, // Ajuste seu link aqui
+    { text: "GitHub", href: "https://github.com/beloyasmin" },      // Ajuste seu link aqui
+  ],
+  socialImage: "/zen-og.png",
+  canonicalURL: "https://portfolio-yasmin-belo.vercel.app",
+};
+
 export const SITE_CONTENT: SiteContent = {
   hero: {
     name: "Yasmin Belo",
@@ -10,7 +30,7 @@ export const SITE_CONTENT: SiteContent = {
     image: "/foto_yasmin.png" 
   },
 
-  // DEIXANDO VAZIO PARA NÃO APARECER A SEÇÃO DE EXPERIÊNCIA ANTERIOR
+  // Deixando vazio para remover a seção indesejada
   experience: [],
 
   projects: [
