@@ -30,10 +30,9 @@ const { name, specialty, summary, email, image } = Astro.props;
       <div class="flex-1 text-center md:text-left order-2 md:order-2">
         <span class="text-white/80 text-lg font-light mb-2 block tracking-tight">Olá! Meu nome é</span>
         
-        {/* NOME INTERATIVO COM CURSOR OCULTÁVEL */}
         <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight min-h-[1.2em] flex items-center justify-center md:justify-start">
           <span id="typewriter" data-name={name}></span>
-          <span id="cursor" class="cursor text-[#8b31ff] ml-1">|</span>
+          <span id="cursor" class="cursor">|</span>
         </h1>
         
         <p class="text-xl md:text-2xl text-primary font-bold mb-4">
@@ -88,36 +87,12 @@ const { name, specialty, summary, email, image } = Astro.props;
 </section>
 
 <style>
-  /* Efeito de piscar do cursor */
   .cursor {
-    display: inline-block;
-    animation: blink 1s step-end infinite;
-    transition: opacity 0.2s ease-out, width 0.2s ease-out; /* Transição suave ao ocultar */
-    width: auto;
-    opacity: 1;
-  }
-
-  /* Classe para ocultar o cursor completamente */
-  .cursor-hidden {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-    pointer-events: none; /* Evita que o elemento interaja */
-  }
-
-  @keyframes blink {
-    from, to { opacity: 1; }
-    50% { opacity: 0; }
-  }
-<style>
-  /* Estilo base do cursor */
-  #cursor {
     display: inline-block;
     color: #8b31ff;
     animation: blink 1s step-end infinite;
-    margin-left: 4px;
+    margin-left: 8px;
     font-weight: 200;
-    transition: opacity 0.2s ease;
   }
 
   @keyframes blink {
@@ -127,12 +102,16 @@ const { name, specialty, summary, email, image } = Astro.props;
 </style>
 
 <script>
-  function startTypewriter() {
+  function setupTypewriter() {
     const typeElement = document.getElementById('typewriter');
     const cursorElement = document.getElementById('cursor');
     
     if (!typeElement || !cursorElement) return;
 
+    // Limpa o conteúdo inicial para evitar duplicação se o script rodar duas vezes
+    typeElement.textContent = "";
+    cursorElement.style.display = "inline-block";
+    
     const text = typeElement.getAttribute('data-name') || "";
     let i = 0;
 
@@ -142,12 +121,7 @@ const { name, specialty, summary, email, image } = Astro.props;
         i++;
         setTimeout(type, 120);
       } else {
-        // --- A SOLUÇÃO DEFINITIVA ---
-        // 1. Remove a animação de piscar
-        cursorElement.style.animation = "none";
-        // 2. Torna invisível
-        cursorElement.style.opacity = "0";
-        // 3. Remove do layout para não sobrar espaço vazio
+        // REMOÇÃO TOTAL DO CURSOR
         cursorElement.style.display = "none";
       }
     }
@@ -155,7 +129,7 @@ const { name, specialty, summary, email, image } = Astro.props;
     type();
   }
 
-  // Executa ao carregar e também garante execução em transições do Astro
-  window.addEventListener('DOMContentLoaded', startTypewriter);
-  document.addEventListener('astro:after-swap', startTypewriter);
+  // Garante que funcione no carregamento inicial e em navegações do Astro
+  window.addEventListener('DOMContentLoaded', setupTypewriter);
+  document.addEventListener('astro:after-swap', setupTypewriter);
 </script>
