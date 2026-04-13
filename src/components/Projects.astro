@@ -102,7 +102,7 @@ const { projects } = Astro.props;
       document.getElementById("projects-data").textContent
     );
 
-    function openModal(index) {
+    window.openModal = function (index) {
       const modal = document.getElementById("modal");
       const title = document.getElementById("modalTitle");
       const image = document.getElementById("modalImage");
@@ -122,7 +122,7 @@ const { projects } = Astro.props;
       modal.classList.add("flex");
     }
 
-    function closeModal() {
+    window.closeModal = function () {
       const modal = document.getElementById("modal");
       if (!modal) return;
 
