@@ -1,117 +1,129 @@
 ---
-import type { ProjectProps } from "@types";
+import { Image } from "astro:assets";
 
-interface Props {
-  projects: ProjectProps[];
+interface Project {
+  name: string;
+  summary: string;
+  image: string;
+  linkPreview: string;
 }
 
 const { projects } = Astro.props;
 ---
 
-<section id="projects" class="py-24 bg-[#0f172a] text-white">
-  <!-- TÍTULO -->
-  <div class="text-center mb-16">
-    <h2 class="text-4xl font-bold">Portfólio de Projetos</h2>
-    <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-4 rounded"></div>
-    <p class="text-gray-400 mt-6 max-w-xl mx-auto">
-      Conheça alguns dos meus projetos em dados e BI
-    </p>
-  </div>
+<section id="projects" class="py-20 bg-[#0b1324] text-white w-full">
+  <div class="w-full px-6">
 
-  <!-- GRID -->
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 max-w-7xl mx-auto">
-    {
-      projects.map((project, index) => (
-        <div class="bg-[#1e293b] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          
+    <!-- TÍTULO -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold">Portfólio de Projetos</h2>
+      <div class="w-20 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>
+      <p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+        Conheça alguns dos principais projetos desenvolvidos com foco em Business Intelligence e análise de dados
+      </p>
+    </div>
+
+    <!-- CARDS -->
+    <div class="grid md:grid-cols-3 gap-10 w-full">
+
+      {projects.map((project, index) => (
+        <div class="bg-[#1c2333] rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 w-full">
+
           <!-- IMAGEM -->
-          <div class="h-52 overflow-hidden">
-            <img
-              src={project.image}
-              alt={project.name}
-              class="w-full h-full object-cover hover:scale-105 transition duration-300"
-            />
-          </div>
+          <img src={project.image} alt={project.name} class="w-full h-56 object-cover"/>
 
           <!-- CONTEÚDO -->
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">{project.name}</h3>
-            <p class="text-gray-400 text-sm mb-4">{project.summary}</p>
+            <span class="text-sm bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full">
+              Projeto
+            </span>
+
+            <h3 class="text-xl font-bold mt-4">{project.name}</h3>
+
+            <p class="text-gray-400 mt-3 text-sm">
+              {project.summary}
+            </p>
 
             <!-- BOTÃO -->
             <button
+              class="mt-6 w-full py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 hover:opacity-90 transition"
               onclick={`openModal(${index})`}
-              class="w-full bg-gradient-to-r from-purple-600 to-blue-500 py-2 rounded-lg hover:opacity-90 transition"
             >
               Ver detalhes
             </button>
           </div>
         </div>
-      ))
-    }
+      ))}
+
+    </div>
   </div>
 
   <!-- MODAL -->
-  <div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-    <div class="bg-[#1e293b] max-w-xl w-full rounded-2xl p-6 relative">
+  <div id="modal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+    <div class="bg-[#1c2333] rounded-2xl w-[95%] max-w-3xl p-6 relative">
 
       <!-- FECHAR -->
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-        ✕
-      </button>
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-xl">✕</button>
 
       <!-- TÍTULO -->
-      <h3 id="modalTitle" class="text-2xl font-bold mb-4"></h3>
+      <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-purple-400"></h3>
 
       <!-- IMAGEM -->
-      <img id="modalImage" class="w-full rounded-lg mb-4" />
+      <img id="modalImage" class="w-full rounded-lg mb-6"/>
 
-      <!-- DESCRIÇÃO -->
+      <!-- OBJETIVOS -->
+      <h4 class="font-semibold mb-2">Descrição:</h4>
       <p id="modalDesc" class="text-gray-300 mb-6"></p>
 
       <!-- BOTÃO -->
       <a
         id="modalLink"
         target="_blank"
-        class="block text-center bg-gradient-to-r from-purple-600 to-blue-500 py-2 rounded-lg hover:opacity-90 transition"
+        class="block text-center py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 hover:opacity-90 transition"
       >
         Ver Projeto
       </a>
+
     </div>
   </div>
-</section>
 
-<!-- SCRIPT -->
-<script is:inline>
-  function openModal(index) {
-    const data = document.getElementById("projects-data");
-    const projects = JSON.parse(data.textContent);
-    const project = projects[index];
+  <!-- SCRIPT -->
+  <script define:vars={{ projects }}>
+    function openModal(index) {
+      const modal = document.getElementById("modal");
+      const title = document.getElementById("modalTitle");
+      const image = document.getElementById("modalImage");
+      const desc = document.getElementById("modalDesc");
+      const link = document.getElementById("modalLink");
 
-    const modal = document.getElementById("modal");
-    const title = document.getElementById("modalTitle");
-    const image = document.getElementById("modalImage");
-    const desc = document.getElementById("modalDesc");
-    const link = document.getElementById("modalLink");
+      const project = projects[index];
 
-    if (modal && title && image && desc && link) {
-      modal.classList.remove("hidden");
-      title.innerText = project.name;
+      if (!modal || !title || !image || !desc || !link) return;
+
+      title.textContent = project.name;
       image.src = project.image;
-      desc.innerText = project.summary;
+      desc.textContent = project.summary;
       link.href = project.linkPreview;
-    }
-  }
 
-  function closeModal() {
-    const modal = document.getElementById("modal");
-    if (modal) {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("modal");
+      if (!modal) return;
+
       modal.classList.add("hidden");
+      modal.classList.remove("flex");
     }
-  }
-</script>
 
-<!-- DADOS PARA O SCRIPT -->
-<script id="projects-data" type="application/json" is:inline>
-  {JSON.stringify(projects)}
-</script>
+    // fechar clicando fora
+    document.addEventListener("click", (e) => {
+      const modal = document.getElementById("modal");
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
+
+</section>
