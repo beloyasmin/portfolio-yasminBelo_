@@ -30,25 +30,23 @@ const { name, specialty, summary, email, image } = Astro.props;
       <div class="flex-1 text-center md:text-left order-2 md:order-2">
         <span class="text-white/80 text-lg font-light mb-2 block tracking-tight anim-entrance" style="animation-delay: 300ms;">
           Olá! Meu nome é
-        </span >
+        </span>
         
-        <h1 
-          id="hero-name"
-          data-value={name}
-          class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-primary opacity-0"
-        >
-          {name}
-        </h1>
+        <div class="overflow-hidden mb-6">
+          <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-primary name-reveal">
+            {name}
+          </h1>
+        </div>
         
-        <p class="text-xl md:text-2xl text-white font-bold mb-4 anim-entrance" style="animation-delay: 700ms;">
+        <p class="text-xl md:text-2xl text-white font-bold mb-4 anim-entrance" style="animation-delay: 800ms;">
           {specialty}
         </p>
 
-        <p class="text-base text-neutral leading-relaxed mb-10 max-w-xl mx-auto md:mx-0 anim-entrance" style="animation-delay: 900ms;">
+        <p class="text-base text-neutral leading-relaxed mb-10 max-w-xl mx-auto md:mx-0 anim-entrance" style="animation-delay: 1000ms;">
           {summary}
         </p>
 
-        <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-14 anim-entrance" style="animation-delay: 1100ms;">
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-14 anim-entrance" style="animation-delay: 1200ms;">
           <a href="#about" class="bg-primary hover:brightness-110 text-white px-8 py-3 rounded-xl font-medium transition-all hover:scale-105 shadow-lg shadow-primary/20">
             Sobre Mim →
           </a>
@@ -60,7 +58,7 @@ const { name, specialty, summary, email, image } = Astro.props;
           </a>
         </div>
 
-        <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-white text-sm border-t border-white/10 pt-8 anim-entrance" style="animation-delay: 1300ms;">
+        <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-white text-sm border-t border-white/10 pt-8 anim-entrance" style="animation-delay: 1400ms;">
           <a href="https://wa.me/5521991435429" target="_blank" class="flex items-center gap-2 hover:text-primary transition-colors group">
              <span class="text-[#2fd165] text-lg group-hover:scale-110 transition-transform">📞</span> 
              <span>(21) 99143-5429</span>
@@ -84,58 +82,32 @@ const { name, specialty, summary, email, image } = Astro.props;
 </section>
 
 <style>
-  /* Animação de Fade In simples */
   .anim-entrance {
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Estilo da Revelação do Nome */
+  .name-reveal {
+    opacity: 0;
+    transform: translateY(100%);
+    animation: revealUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    animation-delay: 500ms;
   }
 
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-</style>
 
-<script>
-  function scrambleText(element: HTMLElement) {
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZYASMINBELO"; 
-    const originalText = element.dataset.value || "";
-    let iterations = 0;
-    const duration = 2; // Duração aproximada em segundos
-    const speed = 30; // Velocidade da animação (ms)
-
-    // Revela o elemento antes de começar
-    element.classList.remove('opacity-0');
-
-    const interval = setInterval(() => {
-      element.innerText = originalText
-        .split("")
-        .map((letter, index) => {
-          if (index < iterations) {
-            return originalText[index];
-          }
-          return letters[Math.floor(Math.random() * letters.length)];
-        })
-        .join("");
-
-      if (iterations >= originalText.length) {
-        clearInterval(interval);
-        element.innerText = originalText; // Garante o texto original no final
-      }
-
-      iterations += 1 / duration;
-    }, speed);
-  }
-
-  // Executa a animação ao carregar a página
-  window.addEventListener("DOMContentLoaded", () => {
-    const nameElement = document.getElementById("hero-name");
-    
-    // Pequeno atraso para alinhar com o fluxo das outras animações (style="animation-delay: 500ms;")
-    if (nameElement) {
-      setTimeout(() => {
-        scrambleText(nameElement);
-      }, 500);
+  @keyframes revealUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
     }
-  });
-</script>
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
