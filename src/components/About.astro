@@ -6,12 +6,10 @@ type Props = AboutProps & Pick<HeroProps, "name">;
 
 const { image, name } = Astro.props;
 
-// Texto estratégico focado em impacto e solução técnica
 const customDescription = "Profissional de análise de dados com experiência no uso de Python, SQL e ferramentas de visualização, atuando na construção de relatórios, acompanhamento de indicadores e geração de insights para apoio à tomada de decisão. Com foco em inteligência de negócios, busco transformar dados em informações estratégicas, identificando padrões e oportunidades que contribuam para a eficiência e crescimento das operações.";
 ---
 
 <section id="about" class="py-24 bg-[#f1f5f9] scroll-mt-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-
   <div class="px-6 md:px-12 lg:px-20">
     
     <div class="text-center mb-16">
@@ -43,18 +41,14 @@ const customDescription = "Profissional de análise de dados com experiência no
       </div>
 
       <div class="grid sm:grid-cols-2 gap-6 w-full">
-        
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] group transition-all hover:-translate-y-1">
           <div class="mb-4 text-[#8b31ff] group-hover:scale-110 transition-transform">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 3v18h18"/>
-              <path d="m19 9-5 5-4-4-3 3"/>
+              <path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>
             </svg>
           </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Business Intelligence</h3>
-          <p class="text-[#64748b] text-sm leading-relaxed">
-            Desenvolvimento de soluções de BI para apoiar decisões estratégicas
-          </p>
+          <p class="text-[#64748b] text-sm leading-relaxed">Desenvolvimento de soluções de BI para apoiar decisões estratégicas</p>
         </div>
 
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] group transition-all hover:-translate-y-1">
@@ -64,9 +58,7 @@ const customDescription = "Profissional de análise de dados com experiência no
             </svg>
           </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Análise de Dados</h3>
-          <p class="text-[#64748b] text-sm leading-relaxed">
-            Transformação de dados brutos em insights valiosos para o negócio
-          </p>
+          <p class="text-[#64748b] text-sm leading-relaxed">Transformação de dados brutos em insights valiosos para o negócio</p>
         </div>
 
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] group transition-all hover:-translate-y-1">
@@ -76,9 +68,7 @@ const customDescription = "Profissional de análise de dados com experiência no
             </svg>
           </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Dashboards</h3>
-          <p class="text-[#64748b] text-sm leading-relaxed">
-            Criação de painéis interativos e visualizações impactantes
-          </p>
+          <p class="text-[#64748b] text-sm leading-relaxed">Criação de painéis interativos e visualizações impactantes</p>
         </div>
 
         <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] group transition-all hover:-translate-y-1">
@@ -91,13 +81,9 @@ const customDescription = "Profissional de análise de dados com experiência no
             </svg>
           </div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Modelagem de Dados</h3>
-          <p class="text-[#64748b] text-sm leading-relaxed">
-            Estruturação de bancos de dados para garantir performance e integridade
-          </p>
+          <p class="text-[#64748b] text-sm leading-relaxed">Estruturação de bancos de dados para garantir performance e integridade</p>
         </div>
-
       </div>
-
     </div>
   </div>
 </section>
@@ -105,17 +91,17 @@ const customDescription = "Profissional de análise de dados com experiência no
 <script>
   function animateCounter() {
     const counter = document.getElementById('counter');
-    if (!counter) return;
+    if (!counter || counter.classList.contains('animated')) return;
 
     const target = parseInt(counter.getAttribute('data-target') || '0');
-    const duration = 2000; // 2 segundos de animação
+    const duration = 2000;
     const startTime = performance.now();
     
+    counter.classList.add('animated'); // Marca como animado para não repetir
+
     function update(currentTime: number) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
-      // Efeito de facilitação (easeOutQuad) para a contagem ficar mais suave no final
       const easeOutValue = progress * (2 - progress);
       const currentCount = Math.floor(easeOutValue * target);
       
@@ -127,22 +113,30 @@ const customDescription = "Profissional de análise de dados com experiência no
         counter!.textContent = target.toString();
       }
     }
-    
     requestAnimationFrame(update);
   }
 
-  // Ativa a animação apenas quando o elemento aparece na tela
+  // Configuração do observador: dispara quando a seção aparece 20% na tela
+  const observerOptions = {
+    threshold: 0.2
+  };
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      // Se o elemento estiver visível na tela
       if (entry.isIntersecting) {
         animateCounter();
-        observer.unobserve(entry.target);
+      } else {
+        // Opcional: Se quiser que a animação reinicie toda vez que ele sair e voltar:
+        // const counter = document.getElementById('counter');
+        // counter?.classList.remove('animated');
+        // counter!.textContent = "0";
       }
     });
-  }, { threshold: 0.5 });
+  }, observerOptions);
 
-  const counterElement = document.querySelector('#counter');
-  if (counterElement) {
-    observer.observe(counterElement);
+  const targetSection = document.querySelector('#about');
+  if (targetSection) {
+    observer.observe(targetSection);
   }
 </script>
