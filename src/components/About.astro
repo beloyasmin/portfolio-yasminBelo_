@@ -89,16 +89,16 @@ const customDescription = "Profissional de análise de dados com experiência no
 </section>
 
 <script>
+  let animationFrameId: number;
+
   function animateCounter() {
     const counter = document.getElementById('counter');
-    if (!counter || counter.classList.contains('animated')) return;
+    if (!counter) return;
 
     const target = parseInt(counter.getAttribute('data-target') || '0');
     const duration = 2000;
     const startTime = performance.now();
     
-    counter.classList.add('animated'); // Marca como animado para não repetir
-
     function update(currentTime: number) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
@@ -108,29 +108,32 @@ const customDescription = "Profissional de análise de dados com experiência no
       counter!.textContent = currentCount.toString();
       
       if (progress < 1) {
-        requestAnimationFrame(update);
+        animationFrameId = requestAnimationFrame(update);
       } else {
         counter!.textContent = target.toString();
       }
     }
-    requestAnimationFrame(update);
+    cancelAnimationFrame(animationFrameId); // Cancela animações anteriores se houver
+    animationFrameId = requestAnimationFrame(update);
   }
 
-  // Configuração do observador: dispara quando a seção aparece 20% na tela
   const observerOptions = {
-    threshold: 0.2
+    threshold: 0.2 // Dispara quando 20% da seção está visível
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      // Se o elemento estiver visível na tela
+      const counter = document.getElementById('counter');
+      
       if (entry.isIntersecting) {
+        // Quando entra na tela, inicia a contagem
         animateCounter();
       } else {
-        // Opcional: Se quiser que a animação reinicie toda vez que ele sair e voltar:
-        // const counter = document.getElementById('counter');
-        // counter?.classList.remove('animated');
-        // counter!.textContent = "0";
+        // Quando sai da tela, reseta o valor para 0 para estar pronto para a próxima vez
+        if (counter) {
+          cancelAnimationFrame(animationFrameId);
+          counter.textContent = "0";
+        }
       }
     });
   }, observerOptions);
