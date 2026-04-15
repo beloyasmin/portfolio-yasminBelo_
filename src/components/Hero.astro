@@ -12,8 +12,8 @@ const { name, specialty, summary, email, image } = Astro.props;
       
       {image && (
         <div class="flex-shrink-0 relative order-1 md:order-1">
-          <div class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-[#8b31ff] via-[#4686fe] to-[#2fd165] shadow-[--shadow-hero-glow] flex items-center justify-center">
-            <div class="w-full h-full rounded-full overflow-hidden border-4 border-[#0a101f]">
+          <div class="w-64 h-64 md:w-80 md:h-80 rounded-full p-1.5 bg-gradient-to-tr from-primary via-slate-700 to-primary shadow-[--shadow-hero-glow] flex items-center justify-center">
+            <div class="w-full h-full rounded-full overflow-hidden border-4 border-black">
               <Image
                 class="object-cover w-full h-full scale-105"
                 src={image}
@@ -30,12 +30,12 @@ const { name, specialty, summary, email, image } = Astro.props;
       <div class="flex-1 text-center md:text-left order-2 md:order-2">
         <span class="text-white/80 text-lg font-light mb-2 block tracking-tight">Olá! Meu nome é</span>
         
-        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight min-h-[1.2em] flex items-center justify-center md:justify-start">
-          <span id="typewriter" data-name={name}></span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight min-h-[1.2em] flex items-center justify-center md:justify-start">
+          <span id="typewriter" data-name={name} class="text-primary"></span>
           <span id="cursor" class="cursor">|</span>
         </h1>
         
-        <p class="text-xl md:text-2xl text-primary font-bold mb-4">
+        <p class="text-xl md:text-2xl text-white font-bold mb-4">
           {specialty}
         </p>
 
@@ -44,10 +44,10 @@ const { name, specialty, summary, email, image } = Astro.props;
         </p>
 
         <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-14">
-          <a href="#about" class="bg-[#8b31ff] hover:bg-[#7a28e0] text-white px-8 py-3 rounded-xl font-medium transition-all hover:scale-105 shadow-lg shadow-purple-500/20">
+          <a href="#about" class="bg-primary hover:brightness-110 text-white px-8 py-3 rounded-xl font-medium transition-all hover:scale-105 shadow-lg shadow-primary/20">
             Sobre Mim →
           </a>
-          <a href="#projects" class="bg-white hover:bg-neutral-100 text-[#020617] px-8 py-3 rounded-xl font-medium transition-all hover:scale-105">
+          <a href="#projects" class="bg-white hover:bg-neutral-100 text-black px-8 py-3 rounded-xl font-medium transition-all hover:scale-105">
             Projetos
           </a>
           <a href="#contact" class="bg-transparent border border-white/20 hover:bg-white/10 text-white px-8 py-3 rounded-xl font-medium transition-all">
@@ -68,12 +68,12 @@ const { name, specialty, summary, email, image } = Astro.props;
             rel="noopener noreferrer" 
             class="flex items-center gap-2 hover:text-primary transition-colors group"
           >
-            <span class="text-[#4686fe] font-bold text-lg group-hover:scale-110 transition-transform">in</span> 
+            <span class="text-primary font-bold text-lg group-hover:scale-110 transition-transform">in</span> 
             <span class="hover:underline">/YasminBelo</span>
           </a>
 
           <a href={`mailto:${email}`} class="flex items-center gap-2 hover:text-primary transition-colors group">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-400 group-hover:scale-110 transition-transform">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary group-hover:scale-110 transition-transform">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
              </svg>
              <span>{email}</span>
@@ -89,7 +89,8 @@ const { name, specialty, summary, email, image } = Astro.props;
 <style>
   .cursor {
     display: inline-block;
-    color: #8b31ff;
+    /* Cursor agora usa a cor primária Ametista definida no tema */
+    color: var(--color-primary); 
     animation: blink 1s step-end infinite;
     margin-left: 8px;
     font-weight: 200;
@@ -106,11 +107,8 @@ const { name, specialty, summary, email, image } = Astro.props;
     const typeElement = document.getElementById('typewriter');
     const cursorElement = document.getElementById('cursor');
     
-    // Verificação de segurança para o TypeScript:
-    // Só prossegue se ambos os elementos realmente existirem no DOM
     if (!typeElement || !cursorElement) return;
 
-    // Limpa o conteúdo inicial
     typeElement.textContent = "";
     cursorElement.style.display = "inline-block";
     
@@ -119,12 +117,10 @@ const { name, specialty, summary, email, image } = Astro.props;
 
     function type() {
       if (i < text.length) {
-        // Agora o TS sabe que typeElement não é nulo aqui
         typeElement!.textContent += text.charAt(i);
         i++;
         setTimeout(type, 120);
       } else {
-        // Agora o TS sabe que cursorElement não é nulo aqui
         cursorElement!.style.display = "none";
       }
     }
@@ -132,7 +128,6 @@ const { name, specialty, summary, email, image } = Astro.props;
     type();
   }
 
-  // Garante que funcione no carregamento inicial e em navegações do Astro
   window.addEventListener('DOMContentLoaded', setupTypewriter);
   document.addEventListener('astro:after-swap', setupTypewriter);
 </script>
