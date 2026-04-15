@@ -4,7 +4,10 @@ import type { AboutProps, HeroProps } from "@types";
 
 type Props = AboutProps & Pick<HeroProps, "name">;
 
-const { description, image, name } = Astro.props;
+const { image, name } = Astro.props;
+
+// Texto focado em competências profissionais para atrair recrutadores
+const customDescription = "Olá! Sou Yasmin Belo, especialista em transformar dados em inteligência estratégica. Com domínio técnico em Python, SQL e ferramentas de visualização, minha trajetória é focada na construção de soluções que otimizam processos e fundamentam decisões críticas. Não apenas organizo informações; eu as interrogo para encontrar padrões que impulsionam resultados.";
 ---
 
 <section id="about" class="py-24 bg-[#f1f5f9] scroll-mt-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
@@ -18,53 +21,57 @@ const { description, image, name } = Astro.props;
 
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-7xl mx-auto">
       
-      <!-- TEXTO -->
-      <div class="space-y-8 w-full">
+      <div class="space-y-8 w-full text-left">
         <p class="text-[#64748b] text-lg leading-relaxed">
-          Seja muito bem-vindo(a) ao meu portfólio. Conheça um pouco da minha trajetória:
+          Seja muito bem-vindo(a) ao meu portfólio. Conheça o impacto da minha trajetória:
         </p>
 
-        <div class="bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] rounded-3xl p-12 text-center shadow-xl shadow-blue-500/20 w-full">
-          <span class="text-white text-7xl font-bold block mb-2">10+</span>
-          <span class="text-white/90 text-2xl font-medium">Anos de Experiência</span>
+        <div class="bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] rounded-3xl p-12 text-center shadow-xl shadow-blue-500/20 w-full transition-transform hover:scale-[1.01]">
+          <span class="text-white text-7xl font-bold block mb-2">500+</span>
+          <span class="text-white/90 text-2xl font-medium">Horas de Projetos Práticos</span>
         </div>
 
         <div class="space-y-6 text-[#64748b] text-lg leading-relaxed">
-          <p>{description}</p>
+          <p class="text-[#1e293b] font-medium leading-relaxed">
+            {customDescription}
+          </p>
           <p>
-            Atualmente, foco na evolução constante das minhas habilidades técnicas para entregar soluções que não apenas organizam informações, mas geram valor concreto e inovação para o negócio.
+            Atualmente, foco na evolução constante das minhas habilidades técnicas para entregar soluções que não apenas organizam informações, mas geram valor concreto e inovação para o negócio através de análise rigorosa.
           </p>
         </div>
       </div>
 
-      <!-- CARDS -->
       <div class="grid sm:grid-cols-2 gap-6 w-full">
         
-        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
+        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] transition-all hover:shadow-xl hover:-translate-y-1">
+          <div class="text-4xl mb-4 text-[#8b31ff]">📊</div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Business Intelligence</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
-            Desenvolvimento de soluções de BI para apoiar decisões estratégicas
+            Desenvolvimento de soluções de BI para apoiar decisões estratégicas e monitoramento de KPIs.
           </p>
         </div>
 
-        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
+        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] transition-all hover:shadow-xl hover:-translate-y-1">
+          <div class="text-4xl mb-4 text-[#3b82f6]">🔍</div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Análise de Dados</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
-            Transformação de dados brutos em insights valiosos para o negócio
+            Transformação de dados brutos em insights valiosos utilizando métodos estatísticos e Python.
           </p>
         </div>
 
-        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
+        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] transition-all hover:shadow-xl hover:-translate-y-1">
+          <div class="text-4xl mb-4 text-[#8b31ff]">🖥️</div>
           <h3 class="text-[#1e293b] text-xl font-bold mb-3">Dashboards</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
-            Criação de painéis interativos e visualizações impactantes
+            Criação de painéis interativos e visualizações impactantes com foco em UX e clareza de indicadores.
           </p>
         </div>
 
-        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px]">
-          <h3 class="text-[#1e293b] text-xl font-bold mb-3">Consultoria</h3>
+        <div class="bg-white p-10 rounded-2xl shadow-lg shadow-slate-200/60 border border-slate-50 text-center flex flex-col items-center justify-center min-h-[250px] transition-all hover:shadow-xl hover:-translate-y-1">
+          <div class="text-4xl mb-4 text-[#3b82f6]">📐</div>
+          <h3 class="text-[#1e293b] text-xl font-bold mb-3">Modelagem de Dados</h3>
           <p class="text-[#64748b] text-sm leading-relaxed">
-            Orientação estratégica em projetos de dados e analytics
+            Estruturação lógica e dimensional de bancos de dados para garantir performance e integridade.
           </p>
         </div>
 
