@@ -30,9 +30,13 @@ const { name, specialty, summary, email, image } = Astro.props;
       <div class="flex-1 text-center md:text-left order-2 md:order-2">
         <span class="text-white/80 text-lg font-light mb-2 block tracking-tight anim-entrance" style="animation-delay: 300ms;">
           Olá! Meu nome é
-        </span>
+        </span >
         
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-primary anim-entrance-slide" style="animation-delay: 500ms;">
+        <h1 
+          id="hero-name"
+          data-value={name}
+          class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-primary opacity-0"
+        >
           {name}
         </h1>
         
@@ -69,7 +73,7 @@ const { name, specialty, summary, email, image } = Astro.props;
 
           <a href={`mailto:${email}`} class="flex items-center gap-2 hover:text-primary transition-colors group">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary group-hover:scale-110 transition-transform">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
              </svg>
              <span>{email}</span>
           </a>
@@ -86,26 +90,52 @@ const { name, specialty, summary, email, image } = Astro.props;
     animation: fadeIn 0.8s ease-out forwards;
   }
 
-  /* Animação de Fade In + Deslizar para o Nome */
-  .anim-entrance-slide {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 </style>
+
+<script>
+  function scrambleText(element: HTMLElement) {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZYASMINBELO"; 
+    const originalText = element.dataset.value || "";
+    let iterations = 0;
+    const duration = 2; // Duração aproximada em segundos
+    const speed = 30; // Velocidade da animação (ms)
+
+    // Revela o elemento antes de começar
+    element.classList.remove('opacity-0');
+
+    const interval = setInterval(() => {
+      element.innerText = originalText
+        .split("")
+        .map((letter, index) => {
+          if (index < iterations) {
+            return originalText[index];
+          }
+          return letters[Math.floor(Math.random() * letters.length)];
+        })
+        .join("");
+
+      if (iterations >= originalText.length) {
+        clearInterval(interval);
+        element.innerText = originalText; // Garante o texto original no final
+      }
+
+      iterations += 1 / duration;
+    }, speed);
+  }
+
+  // Executa a animação ao carregar a página
+  window.addEventListener("DOMContentLoaded", () => {
+    const nameElement = document.getElementById("hero-name");
+    
+    // Pequeno atraso para alinhar com o fluxo das outras animações (style="animation-delay: 500ms;")
+    if (nameElement) {
+      setTimeout(() => {
+        scrambleText(nameElement);
+      }, 500);
+    }
+  });
+</script>
