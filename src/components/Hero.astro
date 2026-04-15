@@ -33,7 +33,7 @@ const { name, specialty, summary, email, image } = Astro.props;
         </span>
         
         <div class="overflow-hidden mb-6">
-          <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-primary name-reveal">
+          <h1 id="hero-name-text" class="text-5xl md:text-7xl font-extrabold tracking-tight text-primary">
             {name}
           </h1>
         </div>
@@ -87,10 +87,14 @@ const { name, specialty, summary, email, image } = Astro.props;
     animation: fadeIn 0.8s ease-out forwards;
   }
 
-  /* Estilo da Revelação do Nome */
-  .name-reveal {
+  /* Estado inicial do nome: escondido */
+  #hero-name-text {
     opacity: 0;
     transform: translateY(100%);
+  }
+
+  /* Classe que o JS adiciona para disparar a animação */
+  #hero-name-text.active {
     animation: revealUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
     animation-delay: 500ms;
   }
@@ -111,3 +115,24 @@ const { name, specialty, summary, email, image } = Astro.props;
     }
   }
 </style>
+
+<script>
+  const nameElement = document.getElementById('hero-name-text');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Toda vez que entrar na tela, adiciona a classe active
+        nameElement?.classList.add('active');
+      } else {
+        // Quando sair da tela, remove a classe para poder animar de novo
+        nameElement?.classList.remove('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const heroSection = document.querySelector('#hero');
+  if (heroSection && nameElement) {
+    observer.observe(heroSection);
+  }
+</script>
