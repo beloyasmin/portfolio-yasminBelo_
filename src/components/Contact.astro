@@ -7,7 +7,10 @@ const { email } = Astro.props;
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
     <div class="text-center mb-16">
-      <div class="w-16 h-1 bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] mx-auto mb-6"></div>
+      <h2 class="text-[#1e293b] text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+        Entre em Contato
+      </h2>
+      <div class="w-24 h-1.5 bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] mx-auto mb-8 rounded-full"></div>
       <p class="text-[#475569] text-lg max-w-2xl mx-auto font-medium">
         Vamos conversar sobre como posso ajudar seu negócio com soluções em dados e Business Intelligence
       </p>
@@ -86,7 +89,6 @@ const { email } = Astro.props;
         <h2 class="text-[#1e293b] text-2xl font-bold mb-8 tracking-tight">Envie uma Mensagem</h2>
 
         <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-          
           <input type="hidden" name="access_key" value="d5898606-899e-40f2-8296-717108d58173">
 
           <div>
@@ -106,7 +108,7 @@ const { email } = Astro.props;
 
           <button type="submit" class="w-full py-4 bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] text-white font-bold rounded-xl hover:opacity-95 transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 group">
             <span class="group-hover:translate-x-1 transition-transform">Enviar Mensagem</span>
-        
+          
           </button>
 
         </form>
