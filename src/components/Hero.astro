@@ -87,16 +87,15 @@ const { name, specialty, summary, email, image } = Astro.props;
     animation: fadeIn 0.8s ease-out forwards;
   }
 
-  /* Estado inicial do nome: escondido */
   #hero-name-text {
     opacity: 0;
     transform: translateY(100%);
   }
 
-  /* Classe que o JS adiciona para disparar a animação */
+  /* Usamos uma animação CSS clássica disparada pela classe .active */
   #hero-name-text.active {
     animation: revealUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-    animation-delay: 500ms;
+    animation-delay: 400ms;
   }
 
   @keyframes fadeIn {
@@ -118,21 +117,38 @@ const { name, specialty, summary, email, image } = Astro.props;
 
 <script>
   const nameElement = document.getElementById('hero-name-text');
-  
+
+  const triggerAnimation = () => {
+    if (nameElement) {
+      // Remove e readiciona a classe para "resetar" a animação CSS
+      nameElement.classList.remove('active');
+      void nameElement.offsetWidth; // Truque para forçar o navegador a processar o reset
+      nameElement.classList.add('active');
+    }
+  };
+
+  // 1. Dispara ao carregar a página
+  window.addEventListener('load', triggerAnimation);
+
+  // 2. Dispara quando a seção entra na tela (Scroll)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Toda vez que entrar na tela, adiciona a classe active
-        nameElement?.classList.add('active');
+        triggerAnimation();
       } else {
-        // Quando sair da tela, remove a classe para poder animar de novo
         nameElement?.classList.remove('active');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.3 });
 
   const heroSection = document.querySelector('#hero');
-  if (heroSection && nameElement) {
-    observer.observe(heroSection);
-  }
+  if (heroSection) observer.observe(heroSection);
+
+  // 3. Dispara ao clicar em links que apontam para #hero ou Home
+  document.querySelectorAll('a[href^="#hero"], a[href="/"]').forEach(anchor => {
+    anchor.addEventListener('click', () => {
+      // Pequeno delay para esperar o scroll do navegador começar/terminar
+      setTimeout(triggerAnimation, 100);
+    });
+  });
 </script>
