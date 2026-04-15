@@ -27,7 +27,10 @@ const customDescription = "Profissional de análise de dados com experiência no
         </p>
 
         <div class="bg-gradient-to-r from-[#8b31ff] to-[#3b82f6] rounded-3xl p-12 text-center shadow-xl shadow-blue-500/20 w-full">
-          <span class="text-white text-7xl font-bold block mb-2">500+</span>
+          <div class="flex items-center justify-center text-white text-7xl font-bold mb-2">
+            <span id="counter" data-target="500">0</span>
+            <span>+</span>
+          </div>
           <span class="text-white/90 text-2xl font-medium">Horas de Projetos Práticos</span>
         </div>
 
@@ -98,3 +101,48 @@ const customDescription = "Profissional de análise de dados com experiência no
     </div>
   </div>
 </section>
+
+<script>
+  function animateCounter() {
+    const counter = document.getElementById('counter');
+    if (!counter) return;
+
+    const target = parseInt(counter.getAttribute('data-target') || '0');
+    const duration = 2000; // 2 segundos de animação
+    const startTime = performance.now();
+    
+    function update(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Efeito de facilitação (easeOutQuad) para a contagem ficar mais suave no final
+      const easeOutValue = progress * (2 - progress);
+      const currentCount = Math.floor(easeOutValue * target);
+      
+      counter!.textContent = currentCount.toString();
+      
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counter!.textContent = target.toString();
+      }
+    }
+    
+    requestAnimationFrame(update);
+  }
+
+  // Ativa a animação apenas quando o elemento aparece na tela
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const counterElement = document.querySelector('#counter');
+  if (counterElement) {
+    observer.observe(counterElement);
+  }
+</script>
