@@ -4,19 +4,27 @@
   --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
   --font-serif: "Gabarito Variable", ui-serif, serif;
 
-  /* Cores base */
-  --color-primary: #3b82f6;   
-  --color-neutral: #9ca3af;
-  --color-white: #f1f5f9; 
-  --color-black: #020617; 
-
-  /* Gradiente customizado da imagem de referência */
-  --background-image-hero-gradient: linear-gradient(135deg, #3d1490 0%, #1a329c 50%, #1a1e3b 100%);
+  /* --- NOVA PALETA AMETHYST SLATE --- */
   
-  /* Sombra Glow para a foto circular */
-  --shadow-hero-glow: 0 0 60px -10px rgba(139, 49, 255, 0.4);
+  /* Roxo Ametista (Destaques e Botões) */
+  --color-primary: #A855F7;    
+  
+  /* Slate Gray (Descrições e textos menos importantes) */
+  --color-neutral: #94A3B8;  
+  
+  /* Branco Gelo (Títulos e textos principais) */
+  --color-white: #F8FAFC;    
+  
+  /* Azul Ardósia Profundo (Fundo principal) */
+  --color-black: #0F172A;    
 
-  /* Tipografia e espaçamentos (Mantidos do seu original) */
+  /* Fundo do Hero atualizado para um gradiente mais sóbrio */
+  --background-image-hero-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  
+  /* Ajuste do Glow para combinar com a nova cor Ametista */
+  --shadow-hero-glow: 0 0 60px -10px rgba(168, 85, 247, 0.4);
+
+  /* --- MANTENDO O RESTANTE DO SEU CÓDIGO --- */
   --text-7xl: 3.75rem;
   --text-7xl--line-height: 1;
   --tracking-tight: -0.25px;
