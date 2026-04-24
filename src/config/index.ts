@@ -36,18 +36,18 @@ export const SITE_CONTENT: SiteContent = {
 
   projects: [
     {
-      name: "Dashboard Comercial",
-      category: "Comercial",
+      name: "Dashboard Vendas",
+      category: "Vendas",
       summary: "Análise de vendas, margem de lucro e performance com foco em indicadores estratégicos.",
-      descriptionModal: "Análise detalhada de performance comercial, permitindo a visualização de KPIs de faturamento e rentabilidade por canal e vendedor.",
+      descriptionModal: "Análise detalhada de performance comercial, permitindo a visualização de KPIs de faturamento e rentabilidade por produto, supervisor e vendedor.",
       objectives: [
         "Acompanhar faturamento mensal e anual",
         "Análise da margem de lucro por categoria",
         "Performance individual da equipe"
       ],
-      indicators: ["Power BI", "SQL", "DAX"],
-      image: "/dashboard2.png",
-      linkPreview: "https://app.powerbi.com/SEU-LINK-1",
+      indicators: ["Power BI", "Excel", "DAX"],
+      image: "/dashboard_dark.JPG",
+      linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiN2IyNDAyM2MtNTg5NC00ZDFjLWI5MGItMDVkYzVjZmJlNWIxIiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
     {
       name: "Dashboard Logístico",
