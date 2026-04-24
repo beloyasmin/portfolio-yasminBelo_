@@ -71,11 +71,11 @@ export const SITE_CONTENT: SiteContent = {
       objectives: [
         "Acompanhamento de Receita vs Despesa",
         "Análise de Lucratividade por período",
-        "Gestão de fluxo de caixa e inadimplência"
+        "Principais segmentos"
       ],
       indicators: ["Excel", "Power BI", "Financeiro"],
-      image: "/dashboard3.png",
-      linkPreview: "https://app.powerbi.com/SEU-LINK-3",
+      image: "/dashboard_financeiro.png",
+      linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiMmQ0OTgwZDUtMDZkZC00OWVhLWIyMGUtYzZjYWE3YzUxYTE4IiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
   ],
 
