@@ -60,7 +60,7 @@ export const SITE_CONTENT: SiteContent = {
         "Otimização de rotas e performance"
       ],
       indicators: ["Power BI", "Excel", "Dax"],
-      image: "/dashboard1.png",
+      image: "/dashboard_logistico.JPG",
       linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiMGI5Zjg4ZTQtN2I1Mi00YjMwLWE3YTYtZmMxMmEzNzRlMzMxIiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
     {
