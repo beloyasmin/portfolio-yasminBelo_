@@ -73,7 +73,7 @@ export const SITE_CONTENT: SiteContent = {
         "Análise de Lucratividade por período",
         "Principais segmentos"
       ],
-      indicators: ["Excel", "Power BI", "Financeiro"],
+      indicators: ["Excel", "Power BI", "Dax"],
       image: "/dashboard_financeiro.png",
       linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiMmQ0OTgwZDUtMDZkZC00OWVhLWIyMGUtYzZjYWE3YzUxYTE4IiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
