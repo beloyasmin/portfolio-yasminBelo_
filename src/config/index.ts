@@ -67,7 +67,7 @@ export const SITE_CONTENT: SiteContent = {
       name: "Dashboard Financeiro",
       category: "Financeiro",
       summary: "Análise financeira completa com indicadores de receita, despesas e lucratividade.",
-      descriptionModal: "Painel estratégico para gestão de fluxo de caixa, DRE e indicadores de liquidez e endividamento.",
+      descriptionModal: "Painel estratégico para gestão de fluxo de caixa.",
       objectives: [
         "Acompanhamento de Receita vs Despesa",
         "Análise de Lucratividade por período",
