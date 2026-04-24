@@ -59,9 +59,9 @@ export const SITE_CONTENT: SiteContent = {
         "Monitoramento de custos de frete",
         "Otimização de rotas e performance"
       ],
-      indicators: ["Power BI", "Python", "SQL"],
+      indicators: ["Power BI", "Excel", "Dax"],
       image: "/dashboard1.png",
-      linkPreview: "https://app.powerbi.com/SEU-LINK-2",
+      linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiMGI5Zjg4ZTQtN2I1Mi00YjMwLWE3YTYtZmMxMmEzNzRlMzMxIiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
     {
       name: "Dashboard Financeiro",
