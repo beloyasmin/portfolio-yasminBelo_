@@ -45,21 +45,22 @@ export const SITE_CONTENT: SiteContent = {
         "Análise da margem de lucro por categoria",
         "Performance individual da equipe"
       ],
-      indicators: ["Power BI", "Excel", "DAX"],
+      ferramentas: ["Power BI", "Excel", "DAX"],
       image: "/dashboard_dark.JPG",
       linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiN2IyNDAyM2MtNTg5NC00ZDFjLWI5MGItMDVkYzVjZmJlNWIxIiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
     {
       name: "Dashboard Logístico",
       category: "Logística",
-      summary: "Monitoramento de entregas, custos logísticos e eficiência operacional.",
-      descriptionModal: "Dashboard completo para análise logística com foco em fretes, tempos de entrega e performance de transportadoras.",
+      summary: "Análise da performance de entregas com foco em OTIF e eficiência operacional.",
+      descriptionModal: "Dashboard desenvolvido para monitorar a eficiência logística, analisando indicadores como OTIF, entregas no prazo e completas, além de identificar gargalos por área responsável, motivos de falha e performance por filial.",
       objectives: [
-        "Acompanhar Lead Time de entrega",
-        "Monitoramento de custos de frete",
-        "Otimização de rotas e performance"
-      ],
-      indicators: ["Power BI", "Excel", "Dax"],
+      "Monitorar o indicador OTIF (On Time In Full)",
+      "Identificar causas de atrasos nas entregas",
+      "Analisar performance por filial e responsável",
+      "Apoiar decisões para melhoria operacional"
+  ],
+      ferramentas: ["Power BI", "Excel", "Dax"],
       image: "/dashboard_logistico.JPG",
       linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiMGI5Zjg4ZTQtN2I1Mi00YjMwLWE3YTYtZmMxMmEzNzRlMzMxIiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
@@ -73,7 +74,7 @@ export const SITE_CONTENT: SiteContent = {
         "Análise de Lucratividade por período",
         "Principais segmentos"
       ],
-      indicators: ["Excel", "Power BI", "Dax"],
+      ferramentas: ["Excel", "Power BI", "Dax"],
       image: "/dashboard_financeiro.png",
       linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiMmQ0OTgwZDUtMDZkZC00OWVhLWIyMGUtYzZjYWE3YzUxYTE4IiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
     },
