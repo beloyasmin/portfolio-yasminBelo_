@@ -59,7 +59,7 @@ export const SITE_CONTENT: SiteContent = {
       "Identificar causas de atrasos nas entregas",
       "Analisar performance por filial e responsável",
       "Apoiar decisões para melhoria operacional"
-  ],
+  ], 
       ferramentas: ["Power BI", "Excel", "Dax"],
       image: "/dashboard_logistico.JPG",
       linkPreview: "https://app.powerbi.com/view?r=eyJrIjoiMGI5Zjg4ZTQtN2I1Mi00YjMwLWE3YTYtZmMxMmEzNzRlMzMxIiwidCI6ImJjMDE0OTFiLTQxZWEtNGRmOC1iMGMwLTJjOWFhMzczYzc4NyJ9",
