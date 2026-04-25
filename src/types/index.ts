@@ -37,6 +37,7 @@ export interface ProjectProps {
   descriptionModal?: string;
   objectives?: string[];
   indicators?: string[];
+  ferramentas?: string[]
   summary: string;
   image: string;
   linkPreview?: string;
